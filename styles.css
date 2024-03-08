@@ -1,0 +1,255 @@
+/* Font Import */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+:root {
+    /* Primary Colors */
+    --dark-magenta: hsl(300, 43%, 22%);
+    --soft-pink: hsl(333, 80%, 67%);
+
+    /* Neutral Colors */
+    --dark-gray-magenta: hsl(303, 10%, 53%);
+    --light-gray-magenta: hsl(300, 24%, 96%);
+    --white: hsl(0, 0%, 100%);
+
+    /* Spacing and others */
+    --radius: 0.6rem;
+}
+
+
+/* Global Styles */
+
+html {
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.938rem;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    background-image: url("./images/bg-pattern-top-mobile.svg"), url("./images/bg-pattern-bottom-mobile.svg");
+    background-repeat: no-repeat;
+    background-position: top, bottom;
+    margin: 20vw 8vw;
+}
+
+main {
+    display: grid;
+    grid-template-areas:
+    "site-header"
+    "ratings"
+    "testimonials";
+}
+
+.site-header {
+    display: grid;
+    gap: 2rem;
+    grid-area: site-header;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 2rem + 1.5vw , 4rem);
+    font-weight: 700;
+    color: var(--dark-magenta);
+    line-height: 0.8;
+}
+
+.description {
+    color: var(--dark-gray-magenta);
+    font-size: clamp(1.1rem, 1rem + 0.5vw , 1.4rem);
+}
+
+
+/* Rating Styles */ 
+.ratings {
+    display: grid;
+    gap: 1rem;
+    margin-block: 2.8rem;
+    grid-area: ratings;
+}
+
+.rating {
+    color: var(--dark-magenta);
+    background-color: var(--light-gray-magenta);
+    border-radius: var(--radius);
+    display: grid;
+    gap: 0.8rem;
+    place-items: center;
+    padding: 1rem 2rem;
+}
+
+.stars {
+    display: flex;
+    gap: 0.5rem;
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+
+/* Testimonials */
+.testimonials {
+    display: grid;
+    gap: 1rem;
+    grid-area: testimonials;
+    font-size: 1.1rem;
+}
+
+.testimonial {
+    background-color: var(--dark-magenta);
+    padding: 2.5rem 2rem;
+    text-align: left;
+    color: var(--white);
+    display: grid;
+    gap: 1.5rem;
+    border-radius: var(--radius);
+}
+
+.colton {
+    --image-url: url("./images/image-colton.jpg");
+}
+
+.irene {
+    --image-url: url("./images/image-irene.jpg");
+}
+
+.anne {
+    --image-url: url("./images/image-anne.jpg");
+}
+
+.testimonial-header::before {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-image: var(--image-url);
+    background-position: center;
+    background-size: cover;
+}
+
+.testimonial-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+}
+
+.person-info {
+    display: grid;
+    place-content: center start;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+.role {
+    color: var(--soft-pink);
+}
+
+blockquote {
+    font-weight: 400;
+    color: var(--light-gray-magenta);
+}
+
+
+@media (min-width: 992px) {
+    body {
+        background-image: url("./images/bg-pattern-top-desktop.svg"), url("./images/bg-pattern-bottom-desktop.svg");
+        background-position: top left, bottom right;    
+        margin-block: 0;
+    }
+    main {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        grid-template-areas: 
+            "site-header ratings"
+            "testimonials testimonials";
+    }
+    .site-header {
+        text-align: left;
+        padding: 2.5rem 0;
+    }
+    .ratings {
+        grid-template-columns: 2rem 2rem 1fr 2rem 2rem;
+        margin: 0;
+        align-content: center;
+    }
+    .rating {
+        grid-auto-flow: column;
+        justify-content: start;
+        gap: 2rem;
+    }
+    .rating:nth-child(1) {
+        grid-column: 1 / 4;
+    }
+    .rating:nth-child(2) {
+        grid-column: 2 / 5;
+    }
+    .rating:nth-child(3) {
+        grid-column: 3 / 6;
+    }
+    .testimonials {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1rem 1rem 1fr 1rem 1rem;
+        gap: 0 2rem;
+    }
+    .colton {
+        grid-row: 1 / 4;
+    }
+    .irene {
+        grid-row: 2 / 5;
+    }
+    .anne {
+        grid-row: 3 / 6;
+    }
+}
+
+@media (min-width: 1400px) {
+    h2 {
+        font-size: 1.2rem;
+    }
+}
