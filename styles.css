@@ -52,6 +52,8 @@ h6 {
     --white: hsl(0, 0%, 100%);
 
     /* Spacing and others */
+    --spacing-block: 22vw;
+    --spacing-inline: 7.5vw;
     --radius: 0.6rem;
 }
 
@@ -85,7 +87,7 @@ body {
     background-image: url("./images/bg-pattern-top-mobile.svg"), url("./images/bg-pattern-bottom-mobile.svg");
     background-repeat: no-repeat;
     background-position: top, bottom;
-    margin: 22vw 6vw;
+    margin: var(--spacing-block) var(--spacing-inline);
 }
 
 main {
@@ -202,9 +204,10 @@ h3 {
 
 @media (min-width: 1200px) {
     body {
+        --spacing-block: 0;
+        --spacing-inline: 6vw;
         background-image: url("./images/bg-pattern-top-desktop.svg"), url("./images/bg-pattern-bottom-desktop.svg");
         background-position: top left, bottom right;    
-        margin-block: 0;
     }
     main {
         grid-template-columns: 1fr 8.5vw 1fr;
@@ -250,4 +253,20 @@ h3 {
         grid-row: 3 / 6;
     }
 }
+
+@media (min-width: 1400px) {
+    body {
+        --spacing-inline: 8.5vw;
+    }
+    h3 {
+        font-size: 1.28rem;
+    }
+}
+
+@media (max-height: 799px) and (min-width: 1200px) {
+    body {
+        --spacing-block: 20vh;
+    }
+}
+
 
